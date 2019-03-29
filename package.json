@@ -3,11 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bootstrap": "^4.3.1",
+    "classnames": "^2.2.6",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8"
   },
   "scripts": {
+    "dev": "concurrently --kill-others-on-fail \"yarn sass:watch\" \"yarn start\"",
+    "sass:watch": "sass --watch src/assets/scss:src/assets/css",
+    "sass:build": "sass --update src/assets/scss:src/assets/css",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -23,6 +29,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "concurrently": "^4.1.0",
     "eslint": "^5.15.3",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.16.0",
