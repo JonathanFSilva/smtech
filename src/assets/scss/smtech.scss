@@ -1,0 +1,327 @@
+@import "./core/variables";
+@import "./core/mixins";
+@import "./core/misc";
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.section-title {
+  font-size: 2rem;
+  color: $secondary-text-color;
+}
+
+// .btn {
+//   padding: 0.8rem;
+//   color: $primary-color-text;
+//   background: $primary-color;
+//   border-radius: 5px;
+// }
+
+// .btn-outline {
+//   border: 2px solid $primary-color;
+// }
+
+header {
+  grid-column: span 12;
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+  background: $primary-color;
+  box-shadow: 0 1px 10px 1px rgba($color: $primary-color, $alpha: 0.6);
+  @include transition(all 0.4s ease);
+
+  &.transparent {
+    padding-top: 30px;
+    background: $transparent;
+    box-shadow: none;
+    @include transition(all 0.4s ease);
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 2rem;
+
+    .nav-brand {
+      max-width: 240px;
+    }
+
+    .nav-menu {
+      .nav-item {
+        display: inline-block;
+        padding: 0 0.8rem;
+        list-style-type: none;
+        color: rgba($color: $primary-color-text, $alpha: 0.4);
+
+        &.active {
+          color: $primary-color-text;
+
+          &::after {
+            width: 100%;
+            background: $primary-color-text;
+            @include transition(width 0.3s ease);
+          }
+        }
+
+        &::after {
+          content: "";
+          display: block;
+          height: 2px;
+          width: 0;
+          margin: 0 auto;
+          background: $transparent;
+          @include transition(width 0.3s ease);
+        }
+
+        &:hover:not(.active) {
+          &::after {
+            width: 100%;
+            background: $primary-color-text;
+          }
+        }
+      }
+
+      .nav-link {
+        color: inherit;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+
+      @include mediumScreen {
+        display: none;
+
+        &.open {
+          position: absolute;
+          z-index: 3;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba($color: $primary-color, $alpha: 0.8);
+
+          .nav-item {
+            margin: 0.4rem auto;
+            &::after {
+              display: none;
+            }
+
+            &:hover {
+              color: $primary-color-text;
+              @include transition(color 0.2s ease-out);
+            }
+          }
+
+          .nav-link {
+            font-size: 1.6rem;
+          }
+        }
+      }
+    }
+
+    .nav-toggler {
+      display: none;
+      z-index: 3;
+      background: $transparent;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        div {
+          background: rgba($color: $primary-color-text, $alpha: 0.6);
+        }
+      }
+
+      div {
+        width: 30px;
+        height: 3px;
+        margin: 5px;
+        background: $primary-color-text;
+        @include transition(all 0.3s ease-out);
+      }
+
+      &.open {
+        transform: rotate(180deg);
+
+        div {
+          @include transition(all 0.4s ease);
+
+          &:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+          }
+
+          &:nth-child(2) {
+            opacity: 0;
+          }
+
+          &:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+          }
+        }
+      }
+
+      @include mediumScreen {
+        display: block;
+      }
+    }
+
+    @include mediumScreen {
+      padding: 0.6rem 1rem;
+    }
+  }
+}
+
+main {
+  grid-column: span 12;
+  align-items: center;
+  justify-content: center;
+
+  .heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    min-height: 500px;
+    background: $header-background;
+    background-size: cover;
+    background-attachment: fixed;
+
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      right: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba($color: $black, $alpha: $background-opacity);
+    }
+
+    .logo {
+      z-index: 2;
+      width: 300px;
+    }
+
+    h1 {
+      z-index: 2;
+      font-size: 6rem;
+      color: $primary-color-text;
+
+      @include mediumScreen {
+        display: none;
+      }
+    }
+
+    h2 {
+      z-index: 2;
+      font-size: 3.5rem;
+      color: $secondary-text-color;
+    }
+  }
+
+  #services {
+    display: grid;
+    background-color: $regular;
+
+    .section-title {
+      text-align: center;
+      color: $secondary-text-color;
+    }
+
+    .section-content {
+      display: grid;
+      grid-gap: 20px;
+      grid-template-columns: repeat(3, auto);
+      margin: 1.2rem 0;
+    }
+
+    .service {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 3rem 2rem;
+      border: none;
+      border-radius: 3px;
+      background: $primary-color-text;
+      box-shadow: 0 1px 1px 0 rgba($color: $secondary-text-color, $alpha: 0.4);
+
+      &:hover {
+        box-shadow: 1px 3px 10px 10px
+          rgba($color: $secondary-text-color, $alpha: 0.2);
+      }
+    }
+
+    .service-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 120px;
+      height: 120px;
+      color: $primary-color-text;
+      background: rgba($color: $primary-color, $alpha: 0.8);
+      border-radius: 50%;
+      box-shadow: 2px 3px 5px 0 rgba($color: $secondary-text-color, $alpha: 0.4);
+    }
+
+    .service-title {
+      padding: 0.6rem;
+      color: $primary-text-color;
+    }
+
+    .service-description {
+      text-align: justify;
+      font-weight: 600;
+      color: $secondary-text-color;
+    }
+
+    @include mediumScreen {
+      .section-title {
+        font-size: 1.4rem;
+      }
+
+      .section-content {
+        grid-template-columns: auto;
+      }
+
+      .service {
+        margin: 0.2rem;
+      }
+    }
+
+    @include smallScreen {
+      .section-title {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+footer {
+  grid-column: span 12;
+
+  .social-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: rgba($color: $primary-color, $alpha: 0.8);
+
+    li {
+      display: inline-block;
+      margin: 0.8rem 0.4rem;
+
+      a {
+        color: $primary-color-text;
+      }
+    }
+  }
+}
