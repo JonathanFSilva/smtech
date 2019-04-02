@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-// import 'bootstrap/dist/css/bootstrap.css';
 import './assets/css/smtech.css';
 
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 import routes from './routes';
 
@@ -26,7 +26,7 @@ const App = () => (
         </Switch>
       </BrowserRouter>
     </main>
-    <footer />
+    <Footer />
   </div>
 );
 

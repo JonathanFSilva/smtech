@@ -14,6 +14,12 @@ const Header = () => {
       }
     });
 
+    if (window.scrollY > 30 /* 0.2 * window.screen.height */) {
+      setisOnTop(false);
+    } else {
+      setisOnTop(true);
+    }
+
     return () => window.removeEventListener('scroll');
   }, []);
 
@@ -33,7 +39,7 @@ const Header = () => {
           </li>
           <li className="nav-item">
             <a href=" " className="nav-link">
-              Portifolio
+              Serviços
             </a>
           </li>
           <li className="nav-item">
@@ -51,6 +57,11 @@ const Header = () => {
               Contato
             </a>
           </li>
+          {/* <li className="nav-item">
+            <a href=" " className="nav-link btn btn-outline">
+              Contato
+            </a>
+          </li> */}
         </ul>
         <button
           className={`nav-toggler ${className({ open: menuIsOpen })}`}

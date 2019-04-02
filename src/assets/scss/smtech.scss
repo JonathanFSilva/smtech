@@ -7,6 +7,22 @@
   grid-template-columns: repeat(12, 1fr);
 }
 
+.section-title {
+  font-size: 2rem;
+  color: $secondary-text-color;
+}
+
+// .btn {
+//   padding: 0.8rem;
+//   color: $primary-color-text;
+//   background: $primary-color;
+//   border-radius: 5px;
+// }
+
+// .btn-outline {
+//   border: 2px solid $primary-color;
+// }
+
 header {
   grid-column: span 12;
   position: fixed;
@@ -163,6 +179,8 @@ header {
 
 main {
   grid-column: span 12;
+  align-items: center;
+  justify-content: center;
 
   .heading {
     display: flex;
@@ -196,12 +214,114 @@ main {
       z-index: 2;
       font-size: 6rem;
       color: $primary-color-text;
+
+      @include mediumScreen {
+        display: none;
+      }
     }
 
     h2 {
       z-index: 2;
       font-size: 3.5rem;
       color: $secondary-text-color;
+    }
+  }
+
+  #services {
+    display: grid;
+    background-color: $regular;
+
+    .section-title {
+      text-align: center;
+      color: $secondary-text-color;
+    }
+
+    .section-content {
+      display: grid;
+      grid-gap: 20px;
+      grid-template-columns: repeat(3, auto);
+      margin: 1.2rem 0;
+    }
+
+    .service {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 3rem 2rem;
+      border: none;
+      border-radius: 3px;
+      background: $primary-color-text;
+      box-shadow: 0 1px 1px 0 rgba($color: $secondary-text-color, $alpha: 0.4);
+
+      &:hover {
+        box-shadow: 1px 3px 10px 10px
+          rgba($color: $secondary-text-color, $alpha: 0.2);
+      }
+    }
+
+    .service-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 120px;
+      height: 120px;
+      color: $primary-color-text;
+      background: rgba($color: $primary-color, $alpha: 0.8);
+      border-radius: 50%;
+      box-shadow: 2px 3px 5px 0 rgba($color: $secondary-text-color, $alpha: 0.4);
+    }
+
+    .service-title {
+      padding: 0.6rem;
+      color: $primary-text-color;
+    }
+
+    .service-description {
+      text-align: justify;
+      font-weight: 600;
+      color: $secondary-text-color;
+    }
+
+    @include mediumScreen {
+      .section-title {
+        font-size: 1.4rem;
+      }
+
+      .section-content {
+        grid-template-columns: auto;
+      }
+
+      .service {
+        margin: 0.2rem;
+      }
+    }
+
+    @include smallScreen {
+      .section-title {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+footer {
+  grid-column: span 12;
+
+  .social-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: rgba($color: $primary-color, $alpha: 0.8);
+
+    li {
+      display: inline-block;
+      margin: 0.8rem 0.4rem;
+
+      a {
+        color: $primary-color-text;
+      }
     }
   }
 }

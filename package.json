@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.3.1",
     "classnames": "^2.2.6",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -12,6 +11,7 @@
   },
   "scripts": {
     "dev": "concurrently --kill-others-on-fail \"yarn sass:watch\" \"yarn start\"",
+    "production": "yarn sass:build && yarn build",
     "sass:watch": "sass --watch src/assets/scss:src/assets/css",
     "sass:build": "sass --update src/assets/scss:src/assets/css",
     "start": "react-scripts start",
