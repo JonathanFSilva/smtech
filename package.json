@@ -15,11 +15,10 @@
   },
   "scripts": {
     "dev": "concurrently --kill-others-on-fail \"yarn sass:watch\" \"yarn start\"",
-    "production": "yarn sass:build && yarn build",
     "sass:watch": "sass --watch src/assets/scss:src/assets/css",
     "sass:build": "sass --update src/assets/scss:src/assets/css",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "yarn sass:build && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
